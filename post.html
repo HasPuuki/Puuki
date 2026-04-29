@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>阅读文章 · Puuki</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="nav">
+  <a href="index.html">首页</a>
+  <a href="about.html">关于</a>
+  <a href="posts.html">文章</a>
+  <a href="contact.html">联系我</a>
+</div>
+
+<div class="card">
+  <h1>文章内容 📖</h1>
+  <div id="postContent">加载中...</div>
+</div>
+
+<footer>Copyright © 2026 Puuki｜鱼板营业中🍥</footer>
+
+<script>
+const params = new URLSearchParams(location.search);
+const f = params.get("f");
+if(!f) {
+  document.getElementById("postContent").innerText = "暂无文章";
+}else{
+  fetch("posts/"+f)
+  .then(res=>res.text())
+  .then(txt=>{
+    document.getElementById("postContent").innerText = txt;
+  })
+  .catch(()=>{
+    document.getElementById("postContent").innerText = "文章不存在～";
+  })
+}
+
+function createSakura(){let s=document.createElement("div");s.className="sakura";s.innerHTML="🌸";s.style.left=Math.random()*100+"vw";s.style.fontSize=Math.random()*12+8+"px";s.style.animationDuration=Math.random()*6+5+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),11000)}
+setInterval(createSakura,300);
+</script>
+</body>
+</html>

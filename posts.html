@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>文章 · Puuki</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="nav">
+  <a href="index.html">首页</a>
+  <a href="about.html">关于</a>
+  <a href="posts.html">文章</a>
+  <a href="contact.html">联系我</a>
+</div>
+
+<div class="card">
+  <h1>小文章 📝</h1>
+  <div class="sub-title">Puuki 的碎碎念与小随笔 🍥</div>
+  <div class="post-list" id="postList"></div>
+</div>
+
+<footer>Copyright © 2026 Puuki｜鱼板营业中🍥</footer>
+
+<script>
+// 文章列表，直接写死列表，避开跨域
+const posts = [
+  { title: "第一篇小随笔", file: "1.txt" },
+  { title: "日常碎碎念", file: "2.txt" }
+];
+
+const listDom = document.getElementById("postList");
+posts.forEach(p => {
+  let div = document.createElement("div");
+  div.className = "post-item";
+  div.innerHTML = `<a href="post.html?f=${p.file}">${p.title}</a>`;
+  listDom.appendChild(div);
+});
+
+// 樱花
+function createSakura(){let s=document.createElement("div");s.className="sakura";s.innerHTML="🌸";s.style.left=Math.random()*100+"vw";s.style.fontSize=Math.random()*12+8+"px";s.style.animationDuration=Math.random()*6+5+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),11000)}
+setInterval(createSakura,300);
+</script>
+</body>
+</html>
